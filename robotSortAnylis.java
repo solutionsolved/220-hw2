@@ -24,3 +24,9 @@ public class client {
 	}
 	
 }
+
+//need to make data -- shuffle data -- and load data into deque
+//	then start timer -- and start sorting -- with a given inout
+//		end timer		
+//	repeat this with doubling the the input size 
+//		then print out chart.
