@@ -1,2 +1,15 @@
 # 220-hw2
-using a deque to sort (robotSort) and running a analysis on it.
+Jack Martin
+homework 2 -- robotSort.java
+
+THIS IS OUR PROGRAM THAT CREATES A DEQUE OF A GIVEN SIZE
+AND RUNS IT THROUGH ROBOT SORT
+ROBOTSORT -- 	YOU CAN SWAP THE TOP TWO SHEETS ON THE DEQUE
+              OR YOU CAN SHIFT THE HEAD OF THE DEQUE TO TO BOTTOM
+  				    1 > 2 -- SWAP
+  				    1 < 2 -- SHIFT
+
+  				    SPEACIAL CASE IS THE WRAP CASE HAPPEN WHEN YOU ARE
+  				    COMPARING '0' TO 'N-1'
+  				    THEN JUST DO THE OPPISITE OF THE NORMAL.
+
