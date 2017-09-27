@@ -1,3 +1,21 @@
+/*
+ * Jack Martin
+ * homework 2
+ * robotSort.java
+ * 
+ * THIS IS OUR PROGRAM THAT CREATES A DEQUE OF A GIVEN SIZE 
+ * AND RUNS IT THROUGH ROBOT SORT
+ * 
+ * ROBOTSORT -- 	YOU CAN SWAP THE TOP TWO SHEETS ON THE DEQUE 
+ * 				OR YOU CAN SHIFT THE HEAD OF THE DEQUE TO TO BOTTOM
+ * 				1 > 2 -- SWAP
+ * 				1 < 2 -- SHIFT
+ * 				
+ * 				SPEACIAL CASE IS THE WRAP CASE HAPPEN WHEN YOU ARE
+ * 				COMPARING '0' TO 'N-1' 
+ * 				THEN JUST DO THE OPPISITE OF THE NORMAL. 
+ */
+
 package robotSort;
 
 import edu.princeton.cs.algs4.Knuth;
@@ -60,7 +78,6 @@ public class robotSort {
 	
 	public static void sort(Deque<Object> deque) { // Sort the deque so Head is smallest item
 		int loop = 0;
-//		String change = " ";
 		
 		while(loop < 1000000000) {
 			
@@ -72,14 +89,11 @@ public class robotSort {
 			if(one == 0 && two == (deque.size() - 1)) {
 				exch(deque);
 				shift(deque);
-//				StdOut.println("\nWRAPED\n");
 			}else {
 				if(one > two) {
 					exch(deque);
-//					change = "exchange";
 				}else if(one < two) { 
 					shift(deque);
-//					change = "shift";
 				}
 			}
 			
@@ -91,67 +105,32 @@ public class robotSort {
 				break;
 			}
 			
-			//PRINT dque for testing purposes to see how it is moving
-//			StdOut.print(change + ": ");
-//			printDeque(deque);
-			
 			loop++;
 		}
 		
-//		StdOut.println("\n********************************");
-//		StdOut.println("After while loop");
-//		printDeque(deque);
-//		StdOut.println("********************************\n");
-		
-		
-		
-		
 	}
 	
-	public static Object[] makeData(Object[] a) {
-		int size = 0;
-		size = (int)(Math.random() * 100 + 1);
-		
-		
-//		StdOut.println("Fill Array");
+	public static Object[] makeData(Object[] a, int sheets) {
+		int size = sheets;
 		
 		for(int i = 0; i < size-1; i++) {
 			a[i] = i;
 		}
 		
-//		StdOut.println("Filled Array");
-//		StdOut.print("\t");
-//		for(int i = 0; i < size-1; i++) {
-//			StdOut.print(a[i] + " ");
-//		}
-		
 		Knuth.shuffle(a);
-		
-//		StdOut.println("\nafter shuffle");
-//	
-//		for(int i = 0; i < 4; i++) {
-//			System.out.print(a[i] + " ");
-//		}
-		
+				
+		size = size * 2;
 		return a;
 	}
 	
-	public static void main(String[] args) {
-		Object sdata[] = new Object[100]; //for testing
+	public static void main(String[] args, int sheet) {
+		Object sdata[] = new Object[2000]; //for testing
 		
 		
-		makeData(sdata);		//for shuffling and making data
-		
-//		Object[] myData = make();  //going to return a Object of random size and random numbers
-//		
-//		for(int i = 0; i < 4; i++) {
-//			StdOut.print(myData[i] + " ");
-//		}
+		makeData(sdata, sheet);		//for shuffling and making data
 		
 		
 		Deque<Object> myque = new Deque<Object>();
-		
-//		StdOut.println("load to Deque: ");
 		
 		//load data to deque
 		for(int i = 0; i < sdata.length; i++) {
@@ -159,12 +138,12 @@ public class robotSort {
 		}
 		
 		//print out the myque from haed to tail.
-		StdOut.println("my deque: ");
+		StdOut.println("\nmy deque: ");
 		StdOut.println("size: " + myque.size());
 		printDeque(myque);
-//		StdOut.println();
-		
+//		
 		sort(myque);
+		
 	}
 
 }
